@@ -46,9 +46,9 @@ public class Card {
 
     public CardDto toCardDto(){
         return new CardDto(
-                this.id,
-                this.store.getId(),
-                this.stamps.stream().map(Stamp::getId).collect(Collectors.toList())
+            this.id,
+            this.store.getId(),
+            this.stamps.stream().map(Stamp::getId).collect(Collectors.toList())
         );
     }
 

@@ -1,18 +1,15 @@
 package br.com.stamp.controller;
 
 import br.com.stamp.dto.CardDto;
+import br.com.stamp.dto.StoreDto;
 import br.com.stamp.form.StoreForm;
+import br.com.stamp.service.IStoreService;
 import br.com.stamp.service.Imprint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Map;
 
 @RestController
@@ -21,6 +18,9 @@ public class StoreController {
 
     @Autowired
     private Imprint imprintService;
+
+    @Autowired
+    private IStoreService storeService;
 
     @PostMapping("{storeId}/customer/{customerId}")
     public ResponseEntity<CardDto> mark(
@@ -37,5 +37,14 @@ public class StoreController {
                ).toUri();
 
        return ResponseEntity.created(uri).body(card);
+    }
+
+    @PostMapping
+    public ResponseEntity<StoreDto> createStore(@RequestBody StoreForm storeForm, UriComponentsBuilder uriComponentsBuilder) {
+        var store = storeService.createStore(storeForm);
+
+        var uri = uriComponentsBuilder.path("v1/store").build().toUri();
+
+        return ResponseEntity.created(uri).body(store);
     }
 }
