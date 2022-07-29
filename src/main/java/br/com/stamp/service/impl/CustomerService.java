@@ -1,4 +1,4 @@
-package br.com.stamp.service;
+package br.com.stamp.service.impl;
 
 import br.com.stamp.model.Customer;
 import br.com.stamp.repository.CustomerRepository;

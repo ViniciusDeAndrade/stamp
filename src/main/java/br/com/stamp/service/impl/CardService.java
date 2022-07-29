@@ -1,13 +1,11 @@
-package br.com.stamp.service;
+package br.com.stamp.service.impl;
 
 import br.com.stamp.model.Card;
 import br.com.stamp.repository.CardRepository;
-import br.com.stamp.repository.CustomerRepository;
-import br.com.stamp.repository.StoreRepository;
+import br.com.stamp.service.IStoreService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -19,7 +17,7 @@ public class CardService {
     private CardRepository cardRepository;
 
     @Autowired
-    private StoreService storeService;
+    private IStoreService storeService;
 
     @Autowired
     private CustomerService customerService;
