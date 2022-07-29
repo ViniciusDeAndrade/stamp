@@ -5,10 +5,6 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class StoreDto {
-
+public class CustomerDto {
     private Integer id;
-    private String name;
-    private AddressDto address;
-
 }

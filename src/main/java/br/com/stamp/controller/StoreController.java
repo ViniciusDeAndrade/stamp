@@ -43,7 +43,7 @@ public class StoreController {
     public ResponseEntity<StoreDto> createStore(@RequestBody StoreForm storeForm, UriComponentsBuilder uriComponentsBuilder) {
         var store = storeService.createStore(storeForm);
 
-        var uri = uriComponentsBuilder.path("v1/store").build().toUri();
+        var uri = uriComponentsBuilder.path("v1/store/{id}").buildAndExpand(store.getId()).toUri();
 
         return ResponseEntity.created(uri).body(store);
     }

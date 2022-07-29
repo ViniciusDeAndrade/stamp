@@ -17,11 +17,11 @@ public class StoreService implements IStoreService {
     private StoreRepository storeRepository;
 
 
-    public StoreDto getStore(Integer storeId) {
+    public Store getStore(Integer storeId) {
         return storeRepository.findById(storeId)
                 .orElseThrow(
                         () -> new RuntimeException("no store with this id")
-                ).toStoreDto();
+                );
     }
 
     public StoreDto createStore(StoreForm storeForm) {

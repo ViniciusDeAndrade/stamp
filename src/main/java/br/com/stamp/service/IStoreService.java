@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface IStoreService {
 
-    StoreDto getStore(Integer storeId);
+    Store getStore(Integer storeId);
     @Transactional
     StoreDto createStore(StoreForm storeForm);
 }
